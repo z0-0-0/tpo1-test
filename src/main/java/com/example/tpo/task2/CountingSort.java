@@ -22,6 +22,9 @@ public class CountingSort {
     }
 
     private static boolean is_empty(int[] arr) {
+        if (arr == null){
+            return true;
+        }
         if (arr.length == 0) {
             return true;
         }
@@ -69,12 +72,12 @@ public class CountingSort {
         }
 
         if (is_negative) {
-            for (int i = arr.length - 1; i > 0; i--) {
+            for (int i = arr.length - 1; i >= 0; i--) {
                 temp_count[arr[i] + abs_min] = temp_count[arr[i] + abs_min] - 1;
                 sorted_arr[temp_count[arr[i] + abs_min]] = arr[i];
             }
-        } else {
-            for (int i = arr.length - 1; i > 0; i--) {
+        } else if (!is_negative){
+            for (int i = arr.length - 1; i >= 0; i--) {
                 temp_count[arr[i] - abs_min] = temp_count[arr[i] - abs_min] - 1;
                 sorted_arr[temp_count[arr[i] - abs_min]] = arr[i];
             }
